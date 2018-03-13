@@ -1,0 +1,39 @@
+{% extends "::Layout/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}Registration - {{ parent() }}{% endblock %}
+{% block body %}
+
+    <div class="bg">
+        <div class="bg-2">
+            {% include('MainBundle:Common:header2.html.twig') with { active:''} %}
+            <!--============================== content ================================-->
+            <section id="content" class="row">
+                {% include "UserBundle:Resetting:request_content.html.twig" %}
+            </section>
+        </div>
+    </div>
+
+    {% include('MainBundle:Common:aside.html.twig') %}
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('mySideNav').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById('mySideNav').style.width = "0";
+        }
+    </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

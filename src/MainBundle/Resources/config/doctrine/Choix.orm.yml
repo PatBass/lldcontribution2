@@ -1,0 +1,17 @@
+MainBundle\Entity\Contact:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\ChoixRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        proposition:
+            type: string
+            length: 255
+        count:
+            type: integer
+    lifecycleCallbacks: {  }

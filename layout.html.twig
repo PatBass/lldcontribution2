@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Yplushy{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/yplushy_style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        <footer class="row footer-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; P&K Technologies 2016. {{ 'All right reserved'|trans }}.</span>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline quicklinks">
+                            <li><a href="#">{{ 'Privacy Policy'|trans }}</a>
+                            </li>
+                            <li><a href="#">{{ "Terms of Use"|trans }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

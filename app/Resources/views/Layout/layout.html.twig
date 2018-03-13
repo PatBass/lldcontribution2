@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Later Laugh Daily Contribution{% endblock %}</title>
+
+    {% block stylesheets %}{% endblock %}
+    <link href="{{ asset('bundles/main/images/favicon.png') }}" rel="icon">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald:400,300&amp;subset=latin">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Bootstrap css files -->
+    <link href="{{ asset('bundles/main/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+    {#<link href="{{ asset('bundles/main/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">#}
+
+    <!-- Bootstrap Font Awesome CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('bundles/main/css/style.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset('bundles/main/css/reset.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset('bundles/main/css/slider.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset('bundles/main/css/grid_12.css') }}" rel="stylesheet" type="text/css" media="screen">
+
+
+
+
+
+    {#
+
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/search.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/google-map.css') }}" type="text/css">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/main/css/ie.css') }}">
+
+    <link href="{{ asset('bundles/main/css/jquery.fancybox.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/media.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/mixins.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/normalize.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/owl-carousel.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/variables.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/thumbnails.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/print.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/main/css/responsive-embed.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/main/css/tm_panel.css') }}" rel="stylesheet" type="text/css">
+
+    #}
+
+
+
+
+
+
+
+
+
+
+    <!-- Custom Fonts -->
+    <link href="{{ asset('bundles/main/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,300,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Passion+One:400,700' rel='stylesheet' type='text/css'>
+
+    {# {% stylesheets 'bundles/main/css/*' filter="cssrewrite" combine=true %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %} #}
+
+
+
+</head>
+<body>
+    {% block body %}{% endblock %}
+
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('bundles/main/js/jquery-1.7.min.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>#}
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    {#<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>#}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('bundles/main/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/tm-scripts.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/rd-smoothscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/tooltip.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/modal.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/popover.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/collapse.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/tab.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.ui.totop.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/tmstickup.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/superfish.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.rd-navbar.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.rd-google-map.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/wow.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/TMSearch.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.rd-parallax.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery-scrolltofixed-min.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('bundles/main/js/tms-0.4.1.js') }}"></script>
+
+    <script>
+        $(document)
+                .ready(function () {
+                    $('.slider')
+                            ._TMS({
+                                show: 0,
+                                pauseOnHover: true,
+                                prevBu: '.prev',
+                                nextBu: '.next',
+                                playBu: false,
+                                duration: 800,
+                                preset: 'fade',
+                                pagination: '.pags',
+                                pagNums: false,
+                                slideshow: 7000,
+                                numStatus: false,
+                                banners: 'fade',
+                                waitBannerAnimation: false,
+                                progressBar: false
+                            })
+                });
+    </script>
+    <!--[if lt IE 9]-->
+    <script src="{{ asset('bundles/main/js/html5.js') }}"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("[rel='tooltip']").tooltip();
+
+            $('.thumbnail').hover(
+                    function(){
+                        $(this).find('.caption').slideDown(250); //.fadeIn(250)
+                    },
+                    function(){
+                        $(this).find('.caption').slideUp(250); //.fadeOut(205)
+                    }
+            );
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            if($('#errorForm').is(':empty')){
+                $(".alert").hide();
+            }
+            $(".close").click(function() {
+                $(".alert").hide("slow");
+            });
+        });
+
+    </script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

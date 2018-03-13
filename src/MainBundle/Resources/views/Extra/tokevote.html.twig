@@ -1,0 +1,92 @@
+{% extends "::Layout/layout.html.twig" %}
+{% block body %}
+    <br><br>
+    <div style="color: #000;">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-4">
+                Mboté na yo ndeko {{ app.request.get('votant') }} !
+            </div>
+        </div>
+
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-9">
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="text-align: center;">
+                        <h3 class="panel-title">Lelo eyindi ! To zo pona</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: left;color: black;">
+                        <form action="{{ path('tokevote') }}" method="post">
+                            {{ form_errors(form) }}
+                            <div class="col-sm-12">
+                                {{ form_widget(form.proposition,  {'attr': { 'title':'Pona oyo olingi'}}) }}
+                                <p class="help-block text-danger" style="color: red;">{{ form_errors(form.proposition) }}</p>
+
+                                <br>
+                                <div class="form-group">
+                                    <button class="btn btn-success"  type="submit">Tinda vote na yo</button>
+
+                                </div>
+                            </div>
+                            {{form_rest(form)}}
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-9">
+                <table class="table table-striped table-condensed">
+                    <caption>
+                        <h4>Les résultats en temps réel</h4>
+                    </caption>
+                    <thead>
+                    <tr>
+                        <th>Propositions</th>
+                        <th>Points</th>
+                        <th>Votants</th>
+                    </tr>
+                    </thead>
+                    <tbody style="text-align: left;">
+                    {% for choix in listChoix %}
+                    <tr>
+                        <td>
+                            {{ choix.proposition }}
+                        </td>
+                        <td>
+                            {{ choix.count }}
+                        </td>
+                        <td>
+                            {% for votant in votants %}
+                                {{ votant }}{% if not loop.last %},&nbsp;{% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#form_choix label").prepend('<span>&nbsp;&nbsp;</span>');
+            $("#form_choix label").after("<br /><br />");
+            $("#form_choix label").css('color','black');
+        });
+    </script>
+{% endblock %}

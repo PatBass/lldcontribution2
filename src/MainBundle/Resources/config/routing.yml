@@ -1,0 +1,11 @@
+main_homepage:
+    resource: "@MainBundle/Controller/MainController.php"
+    prefix:    /
+    type:      annotation
+
+
+
+
+
+
+

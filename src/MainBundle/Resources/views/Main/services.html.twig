@@ -1,0 +1,72 @@
+{% extends "::Layout/layout.html.twig" %}
+{% block title %}Services - {{ parent() }}{% endblock %}
+{% block body %}
+
+    <div class="bg">
+        <div class="bg-2">
+            {% include('MainBundle:Common:header2.html.twig') with { active: 'services'} %}
+            <!--============================== content ================================-->
+            <section id="content">
+                <div class="slogan top-1">
+                    <p>We <span class="clr-1">provide</span> you with the <span class="clr-1">highest</span> level of <span class="clr-1">services</span></p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit vivamus sed arcu dui eu tincidunt sem.</p>
+                    <a href="#" class="button-2">click here</a> </div>
+                <div class="page3-row1">
+                    <h2><span class="clr-1">S</span>ervices overview</h2>
+                    <div class="page3-col-1 border-right">
+                        <div class="box-4"> <strong class="number2">01.</strong>
+                            <div class="extra-wrap"> <span class="text-4">Strategic planning</span>
+                                <p><strong class="clr-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Vivamus sed arcu dui, eu tincidunt sem vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. </p>
+                                <a href="#" class="link-2">Read more</a> </div>
+                        </div>
+                        <div class="box-4 top-2"> <strong class="number2">04.</strong>
+                            <div class="extra-wrap"> <span class="text-4">Risk management</span>
+                                <p><strong class="clr-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Vivamus sed arcu dui, eu tincidunt sem vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. </p>
+                                <a href="#" class="link-2">Read more</a> </div>
+                        </div>
+                    </div>
+                    <div class="page3-col-1 border-right">
+                        <div class="box-4"> <strong class="number2">02.</strong>
+                            <div class="extra-wrap"> <span class="text-4">Clients relationships</span>
+                                <p><strong class="clr-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Vivamus sed arcu dui, eu tincidunt sem vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. </p>
+                                <a href="#" class="link-2">Read more</a> </div>
+                        </div>
+                        <div class="box-4 top-2"> <strong class="number2">05.</strong>
+                            <div class="extra-wrap"> <span class="text-4">Investments</span>
+                                <p><strong class="clr-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Vivamus sed arcu dui, eu tincidunt sem vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. </p>
+                                <a href="#" class="link-2">Read more</a> </div>
+                        </div>
+                    </div>
+                    <div class="page3-col-1 last">
+                        <div class="box-4"> <strong class="number2">03.</strong>
+                            <div class="extra-wrap"> <span class="text-4">Insurance services</span>
+                                <p><strong class="clr-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Vivamus sed arcu dui, eu tincidunt sem vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. </p>
+                                <a href="#" class="link-2">Read more</a> </div>
+                        </div>
+                        <div class="box-4 top-2"> <strong class="number2">06.</strong>
+                            <div class="extra-wrap"> <span class="text-4">Sales leadership</span>
+                                <p><strong class="clr-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Vivamus sed arcu dui, eu tincidunt sem vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. </p>
+                                <a href="#" class="link-2">Read more</a> </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    {% include('MainBundle:Common:aside.html.twig') %}
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('mySideNav').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById('mySideNav').style.width = "0";
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+MainBundle\Entity\Application:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\ApplicationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        applied:
+            type: boolean
+        name:
+            type: string
+            length: '100'
+        email:
+            type: string
+            length: '100'
+            unique: true
+        phone:
+            type: string
+            length: '16'
+        occupation:
+            type: string
+            length: '100'
+        country:
+            type: string
+            length: 255
+        message:
+            type: text
+        date:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

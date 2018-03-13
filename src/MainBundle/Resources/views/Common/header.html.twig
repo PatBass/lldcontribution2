@@ -1,0 +1,67 @@
+<!--==============================header=================================-->
+<header class="row" style="margin-left: 4%;">
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+        <div id="user_area" class="col-sm-3 col-sm-pull-1">
+            <div style="float: right;" class="row">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    Logged in as <a id="pop" data-toggle="popover" data-html="true" data-content="Please click on the link to <a href='{{ path("fos_user_profile_show") }}'>view your profile</a>" title="<i class='glyphicon glyphicon-user'></i> Your Profile">{{ app.user.firstname }}</a>  <a href="{{ path('fos_user_security_logout') }}" class="lld-contribution"><i class="glyphicon glyphicon-log-out" style="color:lightblue;"></i> Sign Out</a>
+                {% else %}
+                    <a id="pop" href="{{ path('fos_user_security_login') }}" class="lld-security"><i class="glyphicon glyphicon-log-in" style="color:#91abb5;"></i> Sign In </a> - <a href="{{ path('fos_user_registration_register') }}" class="lld-security">Sign Up a Member</a>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        {% if is_granted("ROLE_USER") %}
+            <a id="pop" href="{{ path('home') }}" class="lld-security"><i class="glyphicon glyphicon-log-out" style="color:#91abb5;"></i> Logout </a>
+        {% else %}
+            <a id="pop" href="{{ path('lld_account') }}" class="lld-security"><i class="glyphicon glyphicon-log-in" style="color:#91abb5;"></i> Check Account </a>
+        {% endif %}
+
+    {% endif %}
+
+    <h1><a href="{{ path('home') }}"><img src="{{ asset('bundles/main/images/logo.png') }}" alt=""></a></h1>
+    <nav>
+        <ul class="menu">
+            <li {% if active == 'home' %}class="current"{% endif %}><a href="{{ path('home') }}">Home</a></li>
+            <li {% if active == 'active' %}class="current"{% endif %}><a href="{{ path('about') }}" >About</a></li>
+            <li {% if active == 'services' %}class="current"{% endif %}><a href="{{ path('services') }}" >Services</a></li>
+            <li {% if active == 'contacts' %}class="current"{% endif %}><a href="{{ path('contact') }}">Contacts</a></li>
+        </ul>
+    </nav>
+    <div id="slide">
+        <div class="slider">
+            <ul class="items">
+                <li><img src="{{ asset('bundles/main/images/slider-1.jpg') }}" alt="">
+                    <div class="banner">
+                        <div class="banner-1"></div>
+                        <a href="#" class="button-1">Read more</a></div>
+                </li>
+                <li><img src="{{ asset('bundles/main/images/slider-2.jpg') }}"  alt="">
+                    <div class="banner">
+                        <div class="banner-2"></div>
+                        <a href="#" class="button-1">Read more</a></div>
+                </li>
+                <li><img src="{{ asset('bundles/main/images/slider-3.jpg') }}" alt="">
+                    <div class="banner">
+                        <div class="banner-3"></div>
+                        <a href="#" class="button-1">Read more</a></div>
+                </li>
+                <li><img src="{{ asset('bundles/main/images/3-models.jpg') }}" alt="">
+                    <div class="banner">
+                        <div class="banner-3"></div>
+                        <a href="#" class="button-1">Read more</a></div>
+                </li>
+                <li><img src="{{ asset('bundles/main/images/mister-stick.jpg') }}" alt="">
+                    <div class="banner">
+                        <div class="banner-3"></div>
+                        <a href="#" class="button-1">Read more</a></div>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="prev"></a><a href="#" class="next"></a>
+        <div class="line-left"></div>
+        <div class="line-right"></div>
+        <ul class="pags">
+        </ul>
+    </div>
+</header>

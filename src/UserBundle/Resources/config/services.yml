@@ -1,0 +1,24 @@
+services:
+#    ap_user.example:
+#        class: UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    lld_user.form.registration:
+        class: UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: lldcontribution_userbundle_registration }
+
+    lld_user.password_resetting:
+        class: UserBundle\EventListener\PasswordResettingListener
+        arguments: [ @router ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    fos_user.mailer.twig_swift:
+        class: FOS\UserBundle\Mailer\TwigSwiftMailer
+        arguments:
+            - @mailer
+            - @router
+            - @twig
+            - { template: { confirmation: %fos_user.registration.confirmation.template%, resetting: %fos_user.resetting.email.template% }, from_email: { confirmation: %fos_user.registration.confirmation.from_email%, resetting: %fos_user.resetting.email.from_email% } }
+

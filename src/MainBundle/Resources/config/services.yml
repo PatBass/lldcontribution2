@@ -1,0 +1,16 @@
+services:
+#    main.example:
+#        class: MainBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    main.translation_listener:
+        class: MainBundle\Translation\TranslationListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    main.doctrine.contact_listener:
+        class:     MainBundle\DoctrineListener\ContactListener
+        arguments: [@mailer]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }

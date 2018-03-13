@@ -1,0 +1,331 @@
+{% extends "::Layout/layout.html.twig" %}
+{% block stylesheets %}
+    <!-- Custom CSS -->
+    <link href="{{ asset('bundles/main/css/contact-form.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {% include('MainBundle:Common:header.html.twig') with {'active':'application'} %}
+    <!--========================================================
+                           CONTENT
+ =========================================================-->
+
+    <main>
+
+        <!--<section>
+            <div class="map map_height1">
+                <div id="google-map" class="map_model" data-zoom="11"></div>
+                <ul class="map_locations">
+                    <li data-x="2.201627" data-y="48.866667" data-basic="{{ asset('bundles/main/images/gmap_marker.png') }}" data-active="{{ asset('bundles/main/images/gmap_marker_active.png') }}">
+                        <div class="location">
+                            <h3 class="txt-clr1">
+                                FONDATION
+                                <small>
+                                    O'DELLYA
+                                </small>
+                            </h3>
+                            <address>
+                                <dl>
+                                    <dt>Téléphone: </dt>
+                                    <dd class="phone"><a href="callto:#"> +33 7 81 01 72 30</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Adresse: </dt>
+                                    <dd> 12 Boulevard Aristide Briand Suresnes  France</dd>
+                                </dl>
+                                <dl>
+                                    <dt>Heures: </dt>
+                                    <dd> 7h-18h en semaine ; &nbsp;&nbsp;  toute la journée, les weekends</dd>
+                                </dl>
+                                <dl>
+                                    <dt> E-mail: </dt>
+                                    <dd><a href="mailto:#">contact@odellya.org</a></dd>
+                                </dl>
+                            </address>
+
+                        </div>
+                    </li>
+                    <!-- <li data-x="-74.100000" data-y="40.643180" data-basic="{{ asset('bundles/main/images/gmap_marker2.png') }}" data-active="{{ asset('bundles/main/images/gmap_marker2_active.png') }}">
+                <div class="location">
+                    <h3 class="txt-clr1">
+                        flooring
+                        <small>
+                            RETAILER
+                        </small>
+                    </h3>
+                    <address>
+                        <dl>
+                            <dt>Free phone: </dt>
+                            <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Address: </dt>
+                            <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
+                        </dl>
+                        <dl>
+                            <dt>Hours: </dt>
+                            <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
+                        </dl>
+                        <dl>
+                            <dt> E-mail: </dt>
+                            <dd><a href="mailto:#">info@demolink.org</a></dd>
+                        </dl>
+                    </address>
+
+                </div>
+            </li>
+            <li data-x="-73.8854068" data-y="40.693180" data-basic="{{ asset('bundles/main/images/gmap_marker3.png') }}" data-active="{{ asset('bundles/main/images/gmap_marker3_active.png') }}">
+                <div class="location">
+                    <h3 class="txt-clr1">
+                        flooring
+                        <small>
+                            RETAILER
+                        </small>
+                    </h3>
+                    <address>
+                        <dl>
+                            <dt>Free phone: </dt>
+                            <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Address: </dt>
+                            <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
+                        </dl>
+                        <dl>
+                            <dt>Hours: </dt>
+                            <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
+                        </dl>
+                        <dl>
+                            <dt> E-mail: </dt>
+                            <dd><a href="mailto:#">info@demolink.org</a></dd>
+                        </dl>
+                    </address>
+
+                </div>
+            </li>
+            <li data-x="-73.7874068" data-y="40.613180" data-basic="{{ asset('bundles/main/images/gmap_marker4.png') }}" data-active="{{ asset('bundles/main/images/gmap_marker4_active.png') }}">
+                <div class="location">
+                    <h3 class="txt-clr1">
+                        flooring
+                        <small>
+                            RETAILER
+                        </small>
+                    </h3>
+                    <address>
+                        <dl>
+                            <dt>Free phone: </dt>
+                            <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Address: </dt>
+                            <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
+                        </dl>
+                        <dl>
+                            <dt>Hours: </dt>
+                            <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
+                        </dl>
+                        <dl>
+                            <dt> E-mail: </dt>
+                            <dd><a href="mailto:#">info@demolink.org</a></dd>
+                        </dl>
+                    </address>
+
+                </div>
+            </li>
+            <li data-x="-74.200000" data-y="40.683180" data-basic="{{ asset('bundles/main/images/gmap_marker5.png') }}" data-active="{{ asset('bundles/main/images/gmap_marker5_active.png') }}">
+                <div class="location">
+                    <h3 class="txt-clr1">
+                        flooring
+                        <small>
+                            RETAILER
+                        </small>
+                    </h3>
+                    <address>
+                        <dl>
+                            <dt>Free phone: </dt>
+                            <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Address: </dt>
+                            <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
+                        </dl>
+                        <dl>
+                            <dt>Hours: </dt>
+                            <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
+                        </dl>
+                        <dl>
+                            <dt> E-mail: </dt>
+                            <dd><a href="mailto:#">info@demolink.org</a></dd>
+                        </dl>
+                    </address>
+
+                </div>
+            </li>
+                </ul>
+            </div>
+        </section>-->
+
+        <section class="well well4" style="border: none;">
+            <div class="container">
+
+                <h2 class="txt-pr">
+                    Adhesion
+                    <span style="color:#21c2f8;font-weight:200;">
+                        en ligne
+                    </span>
+                </h2>
+                <br><br>
+                <div class="row">
+                    <div class="col-xs-offset-2 col-xs-9">
+                        {% if app.session.flashbag.has('notice') %}
+                            <div class="alert alert-success">
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                                {% for message in app.session.flashbag.get('notice') %}
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img src="{{ image('bundles/main/images/thumb-up.png').cropResize(60,60) }}">
+                                        </div>
+                                        <div class="col-xs-9">
+                                            {{ message }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-info">
+                        <p>
+                            <span class="label label-warning">N.B</span>&nbsp;
+                            Conformément à la loi « Informatique et Libertés », la confidentialité des informations et leur utilisation exclusive pour l'association sont garanties.
+                        </p>
+                        <p>
+                            Il est à noter que la Fondation n'est pas qu'un simple collectif des passionnés des NTIC, c'est un mouvement qui se donne pour objectif de convaincre les dirigeants congolais de numériser les institutions et administrations publiques du Congo par l'adoption du Pacte technologique. Cela étant, celui ou celle qui souhaite adhérer doit pouvoir répondre à la question de son apport quant à l'atteinte de de cet objectif, et de là découlera automatiquement son rôle et son occupation comme membre actif de la Fondation.
+                        </p>
+                    </div>
+                </div>
+                {{ form_start(form, {'attr': {'class': 'contact-form', 'action':'adhesion', 'method':'POST', 'id':'contact-form'}}) }}
+                    <div class="contact-form-loader"></div>
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="col-xs-1">
+                                {{ form_widget(form.applied, {'attr': {'data-constraints': '@Required @JustLetters'}}) }}
+                            </div>
+                            <div class="col-xs-11">
+                                Je souhaite adhérer à la Fondation O'dellya, organisation à but non lucratif qui a pour mission de proposer au gouvernement congolais de numériser les institutions de l'Etat par l'adoption du "Pacte technologique".
+                            </div>
+                            <span class="error-message">{{ form_errors(form.applied) }}</span>
+
+                        </div>
+                        <br><br><br><br><br>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                Titre de civilité :
+                            </div>
+                            <div class="col-sm-7">
+                                {{ form_widget(form.title, {'attr': { 'placeholder':'Titre de civilité :'}}) }}
+                                <span class="error-message">{{ form_errors(form.title) }}</span>
+                            </div>
+                        </div>
+                        <br><br><br><br>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    {{ form_widget(form.name, {'attr': {'data-constraints': '@Required @JustLetters', 'placeholder':'Nom et prénom :', 'class':'form-control'}}) }}
+                                    <span class="error-message">{{ form_errors(form.name) }}</span>
+                                </div>
+                                <div class="col-xs-6">
+                                    {{ form_widget(form.email, {'attr': {'data-constraints': '@Required @Email', 'placeholder':'Adresse Email :', 'class':'form-control'}}) }}
+                                    <span class="error-message">{{ form_errors(form.email) }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    {{ form_widget(form.phone, {'attr': { 'placeholder':'Téléphone :', 'class':'form-control'}}) }}
+                                    <span class="error-message">{{ form_errors(form.phone) }}</span>
+                                </div>
+                                <div class="col-xs-6">
+                                    {{ form_widget(form.occupation, {'attr': { 'placeholder':'Profession :', 'class':'form-control'}}) }}
+                                    <span class="error-message">{{ form_errors(form.occupation) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                        <div class="form-group">
+                            <div class="col-xs-2">
+                                Pays de résidence :
+                            </div>
+                            <div class="col-xs-10">
+                                {{ form_widget(form.country, {'attr': { 'placeholder':'Votre photo :'}}) }}
+                                <span class="error-message">{{ form_errors(form.country) }}</span>
+                            </div>
+                        </div>
+                        <br><br><br><br>
+                        <div class="form-group">
+                            <div class="col-xs-2">
+                                Ajouter une photo :
+                            </div>
+                            <div class="col-xs-10">
+                                {{ form_widget(form.image, {'attr': { 'placeholder':'Votre photo :'}}) }}
+                                <span class="error-message">{{ form_errors(form.image) }}</span>
+                            </div>
+                        </div>
+                        <br><br><br><br>
+                        <div class="form-group"> Message :<br><br>
+                            {{ form_widget(form.message, {'attr': {'data-constraints': '@Required @Length(min=20,max=999999)','class':'form-control', 'placeholder':'Veuillez insérer ici votre message, suggestions et/ou question(s). Noter qu\'il est important de préciser ce que sera votre apport afin que nous puissons déterminer ce que sera votre rôle en sein de la fondation.'}}) }}
+                            <span class="error-message">{{ form_errors(form.message) }}</span>
+                        </div>
+
+
+                        <div class="recaptcha form-group">
+                            <div class="g-recaptcha" data-sitekey="6LeF9Q4UAAAAAIqGy3uP7DLxQ_L0z4TOSuYz0ikl"></div>
+                        </div>
+
+
+                        <div class="btn-wr text-primary">
+                            <button class="btn btn-primary"  type="submit">J'adhère</button>
+                        </div>
+                    </fieldset>
+
+                    {{ form_rest(form) }}
+                {{ form_end(form) }}
+
+
+            </div>
+        </section>
+
+
+
+    </main>
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJeCYd7WriRsWWMvsS7ygyndMCBWnGvKc"
+            type="text/javascript">
+
+    </script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#mainbundle_application_title label").prepend('<span>&nbsp;&nbsp;</span>');
+
+            $("#mainbundle_application_image label").remove();
+
+        });
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+

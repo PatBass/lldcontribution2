@@ -1,0 +1,191 @@
+{% extends "::Layout/layout.html.twig" %}
+{% block title %}Admin - {{ parent() }}{% endblock %}
+{% block body %}
+
+
+    <div class="bg">
+        <div class="bg-2">
+
+            <!--============================== content ================================-->
+            <section style="padding-right: 45%;" id="" class="row">
+                <div class="row" style="margin-bottom: 50px;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {% if app.user and is_granted("ROLE_ADMIN") %}
+                            <div id="user_area" class="col-sm-8 col-sm-pull-1">
+                                <div style="float: right;" class="row">
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        Logged in as <a id="pop" data-toggle="popover" data-html="true" data-content="Please click on the link to <a href='{{ path("fos_user_profile_show") }}'>view your profile</a>" title="<i class='glyphicon glyphicon-user'></i> Your Profile">{{ app.user.firstname }}</a>  <a href="{{ path('fos_user_security_logout') }}" class="lld-contribution"><i class="glyphicon glyphicon-log-out" style="color:lightblue;"></i> Sign Out</a>
+                                    {% else %}
+                                        <a id="pop" href="{{ path('fos_user_security_login') }}" class="lld-security"><i class="glyphicon glyphicon-log-in" style="color:#91abb5;"></i> Sign In </a> - <a href="{{ path('fos_user_registration_register') }}" class="lld-security">Sign Up a Member</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% else %}
+                            {% if app.user and is_granted("ROLE_USER") %}
+                                <a id="pop" href="{{ path('lld_account_logout') }}" class="lld-security"><i class="glyphicon glyphicon-off" style="color:#91abb5;"></i> Logout </a>
+                            {% elseif is_granted("ROLE_AGENT") %}
+                                Logged in as <a id="pop" data-toggle="popover" data-html="true" data-content="Please click on the link to <a href='{{ path("fos_user_profile_show") }}'>view your profile</a>" title="<i class='glyphicon glyphicon-user'></i> Your Profile">{{ app.user.firstname }}</a>  <a href="{{ path('fos_user_security_logout') }}" class="lld-contribution"><i class="glyphicon glyphicon-log-out" style="color:lightblue;"></i> Sign Out</a>
+                            {% else %}
+                                <a id="pop" href="{{ path('lld_account') }}" class="lld-security"><i class="glyphicon glyphicon-log-in" style="color:#91abb5;"></i> Check Account </a>
+                            {% endif %}
+
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <div class="container table-responsive" style="margin-top:100px;">
+                        <div class="row">
+                            {% if app.session.flashbag.has('info-delete') %}
+                                <div class="alert alert-success">
+                                    {% for message in app.session.flashbag.get('info-delete') %}
+                                        {{ message }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            {% if app.session.flashbag.has('info-activate') %}
+                                <div class="alert alert-success">
+                                    {% for message in app.session.flashbag.get('info-activate') %}
+                                        {{ message }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            {% if app.session.flashbag.has('info-deactivate') %}
+                                <div class="alert alert-success">
+                                    {% for message in app.session.flashbag.get('info-deactivate') %}
+                                        {{ message }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="container">
+                            <div class="whiteBackground">
+                                <table class="table table-bordered table-striped table-condensed" id="star-account-statistics-table">
+                                    <thead>
+
+                                    <tr>
+                                        <th class="info">User ID</th>
+                                        <th class="info">First Name</th>
+                                        <th class="info">Last Name</th>
+                                        <th class="info">Amount</th>
+                                        <th class="info">Status</th>
+                                        {#<th class="info">Photo</th>#}
+                                        <th class="info">Subscription Date</th>
+                                        <th class="info">Code</th>
+                                        <th class="info">Last Modifications</th>
+                                        <th class="info">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for user in users %}
+                                        <tr class="">
+                                            <td>{{ user.id }}</td>
+                                            <td>{{ user.firstName }}</td>
+                                            <td>{{ user.lastName }}</td>
+                                            <td>{{ user.amount }}</td>
+                                            <td>
+                                                {% if user.enabled %}
+                                                    <span class="label label-success">Enabled</span>
+                                                {% else %}
+                                                    <span class="label label-default">Disabled</span>
+                                                {% endif %}
+                                            </td>
+                                            {#
+
+                                            <td>
+                                                {% if user.image %}
+                                                    <img src="{{ asset(user.image.uploadDir ~ '/' ~ user.image.id ~ '.' ~ user.image.url) }}" style="max-width: 130px;max-height: 130px;" />
+                                                {% endif %}
+
+                                            </td>
+
+                                            #}
+
+                                            <td>{{ user.date | date('Y-m-d H:i:s') }}</td>
+                                            <td>{{ user.code }}</td>
+                                            <td>{{ user.updatedAt }}</td>
+                                            <td><a href="{{ path('lld_user_delete', {'id': user.id}) }}" class=""><i class="glyphicon glyphicon-trash" style="color: red;" title="Delete"></i></a> <a href="{{ path('lld_user_deactivate', {'id': user.id}) }}" class="label label-default">Disable</a> <a href="{{ path('lld_user_activate', {'id': user.id}) }}" class="label label-success">Enable</a> <a href="{{ path('lld_profile_edit', {'id':user.id}) }}" class=""><i class="glyphicon glyphicon-edit" style="color: lightblue;" title="Edit"></i></a> </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br>
+                        <h2>Contact Infos</h2>
+                        <div class="whiteBackground">
+                            <table class="table table-bordered table-striped table-condensed" id="star-account-statistics-table">
+                                <thead>
+
+                                <tr>
+                                    <th class="info">Full Name</th>
+                                    <th class="info">Email</th>
+                                    <th class="info">Phone</th>
+                                    <th class="info">Manager Details</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr class="">
+                                        <td>{{ user.firstName }} {{ user.lastName }}</td>
+
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.phone }}</td>
+                                        <td>{{ user.amount }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+
+            </section>
+        </div>
+
+    </div>
+
+    {% include('MainBundle:Common:aside.html.twig') %}
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('mySideNav').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById('mySideNav').style.width = "0";
+        }
+    </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+lld_admin:
+    pattern: /admin
+    defaults : { _controller: UserBundle:Admin:admin }
+
+lld_user_delete:
+    pattern: /delete/{id}
+    defaults : { _controller: UserBundle:Admin:delete }
+    requirements:
+        id: \d+
+
+lld_user_deactivate:
+    pattern: /lock-account/{id}
+    defaults : { _controller: UserBundle:Admin:deactivate }
+    requirements:
+        id: \d+
+
+lld_user_activate:
+    pattern: /enable-account/{id}
+    defaults : { _controller: UserBundle:Admin:activate }
+    requirements:
+        id: \d+
+
+lld_account:
+    pattern: /account
+    defaults: { _controller: UserBundle:Profile:account}
+
+lld_profile_edit:
+    pattern: /profile/edit/{id}
+    defaults: { _controller: UserBundle:Profile:edit}
+
+lld_account_logout:
+    pattern: /account-logout
+    defaults: { _controller: UserBundle:Profile:logout}
+
+lld_profile_show:
+    pattern: /profile-show
+    defaults: { _controller: UserBundle:Profile:profileShow}
