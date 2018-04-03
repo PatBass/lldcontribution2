@@ -69,6 +69,8 @@ class MainController extends Controller
      */
     public function contactAction(Request $request)
     {
+
+
         // Retrieving POST data
         //$postData = $request->request->get('email');
 
@@ -90,15 +92,15 @@ class MainController extends Controller
             $em->persist($contact);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Votre message a été envoyé !');
+            $request->getSession()->getFlashBag()->add('notice', 'Your message has been sent!');
 
             $mailer = $this->get('mailer');
 
             $message =  \Swift_Message::newInstance()
-                ->setSubject('Message venant du formulaire de contact de odellya.org')
-                ->setFrom('contact@odellya.org')
-                ->setTo('contact@odellya.org')
-                ->setBody("Nouveau message provenant de ".$contact->getName()."<br>  Adresse Email : <strong>".$contact->getEmail()."</strong> <br>Son message:<br> <i>".$contact->getMessage()."</i>")
+                ->setSubject('Message from lldcontribution.com')
+                ->setFrom('contact@lldcontribution.com')
+                ->setTo('patrickbassoukissa@gmail.com')
+                ->setBody("New message from ".$contact->getName()."<br>  Email Address : <strong>".$contact->getEmail()."</strong> <br> Message:<br> <i>".$contact->getMessage()."</i>")
             ;
 
             $mailer->send($message);
@@ -343,5 +345,6 @@ class MainController extends Controller
             "translated" => $translated
         ));
     }
+
 
 }

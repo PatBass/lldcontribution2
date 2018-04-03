@@ -24,6 +24,10 @@ lld_account:
     pattern: /account
     defaults: { _controller: UserBundle:Profile:account}
 
+lld_account_logout:
+    pattern: /account-logout
+    defaults: { _controller: UserBundle:Profile:accountLogout}
+
 lld_profile_edit:
     pattern: /profile/edit/{id}
     defaults: { _controller: UserBundle:Profile:edit}
@@ -35,3 +39,4 @@ lld_account_logout:
 lld_profile_show:
     pattern: /profile-show
     defaults: { _controller: UserBundle:Profile:profileShow}
+

@@ -56,13 +56,13 @@ class ProfileController extends Controller
         //$id = $request->request->get('id');
 
 
-
         $user = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('UserBundle:User')
             ->find($id)
         ;
+
 
         $request = $this->getRequest();
 
@@ -120,7 +120,22 @@ class ProfileController extends Controller
                 $response = new RedirectResponse($url);
             }
 
+
+
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            $mailer = $this->get('mailer');
+
+            $manager = $this->get('security.context')->getToken()->getUser();
+
+            $message =  \Swift_Message::newInstance()
+                ->setSubject('Message from lldcontribution.com')
+                ->setFrom('contact@lldcontribution.com')
+                ->setTo('patrickbassoukissa@gmail.com')
+                ->setBody("Hi,"."\n\n"."The profile of ".$user->getFirstName()." ".$user->getLastName()." has been edited by the one using the email ".$manager->getEmail()."\n\n". "Sincerely,"."\n"."LLD Contribution Team")
+            ;
+
+            $mailer->send($message);
 
             return $response;
         }
@@ -138,6 +153,8 @@ class ProfileController extends Controller
 
         $users = $em->getRepository('UserBundle:User')->findAll();
 
+
+
         if ($request->request->get('code')) {
 
             //var_dump($request->request->get('code'));die();
@@ -151,16 +168,30 @@ class ProfileController extends Controller
 
             }
 
-            if ($request->request->get('code') != '22222') {
+            if ($request->request->get('code') != '15lld') {
 
                 if (in_array($request->request->get('code'), $codes)) {
+                    $thisUser = $em->getRepository('UserBundle:User')->findOneBy(array('code' => $request->request->get('code')));
+                    $session = $request->getSession();
+
+                    $session->set('thisUser', $thisUser);
+
+
+
                     //return $this->redirect($this->generateUrl('lld_profile_show'));
-                    return $this->render('UserBundle:Profile:show.html.twig', array(
-                        'user' => $em->getRepository('UserBundle:User')->findOneBy(array('code' => $request->request->get('code')))
-                    ));
+                    if ($session->get('thisUser')->isEnabled()) {
+                        return $this->render('UserBundle:Profile:show.html.twig', array(
+                            'thisuser' => $session->get('thisUser')
+                        ));
+                    } else {
+                        return $this->redirect($this->generateUrl('lld_account'));
+                    }
+
                 } else {
                     $request->getSession()->getFlashBag()->add('no-token', 'That number is unknown in our system');
-                    return $this->render("UserBundle:Security:account_checking.html.twig");
+                    return $this->render("UserBundle:Security:account_checking.html.twig", array(
+                        'thisuser' => null
+                    ));
                 }
             } else {
                 return $this->redirect($this->generateUrl('fos_user_security_login'));
@@ -168,7 +199,9 @@ class ProfileController extends Controller
 
         }
 
-        return $this->render("UserBundle:Security:account_checking.html.twig");
+        return $this->render("UserBundle:Security:account_checking.html.twig", array(
+            'thisuser' => null
+        ));
     }
 
     public function profileShowAction()
@@ -179,5 +212,13 @@ class ProfileController extends Controller
     public function logoutAction()
     {
         return $this->render('MainBundle:Main:home.html.twig');
+    }
+
+    public function accountLogoutAction(Request $request)
+    {
+        if ($request->getSession()->get('thisUser')) {
+            $request->getSession()->set('thisUser', null);
+            return $this->redirect($this->generateUrl('home'));
+        }
     }
 }

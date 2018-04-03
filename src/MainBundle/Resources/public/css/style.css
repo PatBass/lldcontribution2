@@ -222,9 +222,7 @@ ul.list-2 li a:hover {
 	overflow:hidden;
 	position:relative
 }
-.extra-wrap {
-	overflow:hidden;
-}
+
 .fleft {
 	float:left;
 }
@@ -810,4 +808,12 @@ dl.adr dd a:hover {
 	font-weight:normal;
 	margin-right:7px;
 	white-space:nowrap;
+}
+
+.hide {
+  display: none;
+}
+a.read-more-hide, a.read-more-show {
+    color: red;
+    text-decoration: underline;
 }

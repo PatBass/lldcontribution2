@@ -23,11 +23,7 @@ class RegistrationEditFormType extends AbstractType
             ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('phone', 'text')
             ->add('amount', 'money')
-            ->add('image',        ImageType::class, array(
-                'required' => false,
-                    'data_class' => null
-                )
-            )
+
         ;
     }
 

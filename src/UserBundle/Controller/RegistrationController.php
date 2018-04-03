@@ -70,7 +70,7 @@ class RegistrationController extends Controller
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
-                $user->isEnabled(true);
+                $user->setEnabled(true);
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
