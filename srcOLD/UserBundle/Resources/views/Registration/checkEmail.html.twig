@@ -1,0 +1,46 @@
+{% extends "::Layout/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}Registration - {{ parent() }}{% endblock %}
+{% block body %}
+
+    <div class="bg">
+        <div class="bg-2">
+            {% include('MainBundle:Common:header2.html.twig') with { active:''} %}
+            <!--============================== content ================================-->
+            <section id="content" class="row">
+                <div class="container-fluid" style="position: relative; top:50px;">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <div class="panel panel-default">
+                            <div class="panel-body well" id="">
+                                <p><i class="glyphicon glyphicon-ok" style="color: green;"></i>  The account has been created successfully!</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+    </div>
+
+    {% include('MainBundle:Common:aside.html.twig') %}
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('mySideNav').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById('mySideNav').style.width = "0";
+        }
+    </script>
+
+{% endblock %}
+
+
+
+
+
+

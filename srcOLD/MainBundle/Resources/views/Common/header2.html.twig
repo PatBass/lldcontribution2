@@ -1,0 +1,34 @@
+<!--==============================header=================================-->
+<header style="margin-left: 9%;">
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+        <div id="user_area" class="col-sm-3 col-sm-pull-1">
+            <div style="float: right;" class="row">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    Logged in as <a id="pop" data-toggle="popover" data-html="true" data-content="Please click on the link to <a href='{{ path("fos_user_profile_show") }}'>view your profile</a>" title="<i class='glyphicon glyphicon-user'></i> Your Profile">{{ app.user.firstname }}</a>  <a href="{{ path('fos_user_security_logout') }}" class="lld-contribution"><i class="glyphicon glyphicon-log-out" style="color:lightblue;"></i> Sign Out</a>
+                {% else %}
+                    <a id="pop" href="{{ path('fos_user_security_login') }}" class="lld-security"><i class="glyphicon glyphicon-log-in" style="color:#91abb5;"></i> Sign In </a> - <a href="{{ path('fos_user_registration_register') }}" class="lld-security">Sign Up a Member</a>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        {% if app.user and is_granted("ROLE_USER") %}
+            <a id="pop" href="{{ path('lld_account_logout') }}" class="lld-security"><i class="glyphicon glyphicon-off" style="color:#91abb5;"></i> Logout </a>
+        {% else %}
+            {% if  app.session.get('user') %}
+                <a id="pop" href="{{ path('lld_account_logout') }}" class="lld-security"><i class="glyphicon glyphicon-log-out" style="color:#91abb5;"></i> Log out </a>
+            {% else %}
+                <a id="pop" href="{{ path('lld_account') }}" class="lld-security"><i class="glyphicon glyphicon-log-in" style="color:#91abb5;"></i> Check Account </a>
+            {% endif %}
+        {% endif %}
+
+    {% endif %}
+    <h1 style="margin-right: 10%;"><a href="{{ path('home') }}"><img src="{{ asset('bundles/main/images/logo.png') }}" alt=""></a></h1>
+    <nav>
+        <ul class="menu">
+            <li {% if active == 'home' %}class="current"{% endif %}><a href="{{ path('home') }}">Home</a></li>
+            <li {% if active == 'about' %}class="current"{% endif %}><a href="{{ path('about') }}" >About</a></li>
+            <li {% if active == 'services' %}class="current"{% endif %}><a href="{{ path('services') }}" >Services</a></li>
+            <li {% if active == 'contact' %}class="current"{% endif %}><a href="{{ path('contact') }}">Contacts</a></li>
+        </ul>
+    </nav>
+</header>

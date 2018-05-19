@@ -1,6 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="bg">
+
     <div class="bg-2">
         <section id="content" class="row">
             <div class="row">
@@ -12,45 +13,77 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="col-sm-3">
-                {% if app.session.get('thisuser') and app.session.get('thisuser').image is defined %}
-                    <img src="{{ app.session.get('thisuser').image.webPath }}" width="200" height="130" />
-                {% else %}
-                    {% if app.session.get('thisuser').image is defined %}
-                        <img src="{{ asset(app.session.get('thisuser').image.uploadDir ~ '/' ~ app.session.get('thisuser').image.id ~ '.' ~ app.session.get('thisuser').image.url) }}" style="max-width: 130px;max-height: 130px;" />
-                    {% endif %}
 
-                {% endif %}
-            </div>
-            <div class="col-sm-9"></div>
-            <div class="slogan">
+            {% if app.session.get('user') %}
                 <div class="row">
-                    <div class="col-sm-12">
-                        {% if app.session.get('thisuser') %}
-                            <p class="clr-1">{{ app.session.get('thisuser').firstName }} {{ app.session.get('thisuser').lastName }}</p><br><br>
-                            <p>{{ 'profile.show.email'|trans }}: {{ app.session.get('thisuser').username }}</p><br><br>
-                            <p>
-
-                            </p>
-                            <p>Subscription Date : {{ app.session.get('thisuser').date | date("m/d/Y H:i:s") }}</p><br><br>
-                            <p>Current Balance: <span style="font-weight: bold;color: green;">{{ app.session.get('thisuser').amount }} Dirhams</span></p>
+                    <div class="col-sm-5 col-xs-3"></div>
+                    <div class="col-sm-4 col-xs-2" style="position:relative;left:3%;">
+                        {% if app.user and app.user.image is defined %}
+                            <img src="{{ user.image.webPath }}" width="200" height="130" />
                         {% else %}
-                            <h2>Firstname Lastname</h2>
-                            <p>{{ 'profile.show.email'|trans }}: email</p><br><br>
-                            <p>
+                            {% if user.image %}
+                                <img src="{{ asset(user.image.uploadDir ~ '/' ~ user.image.id ~ '.' ~ user.image.url) }}" style="max-width: 130px;max-height: 130px;" />
+                            {% endif %}
 
-                            </p>
-                            <p>Subscription Date : </p><br><br>
-                            <p>Current Balance: amount</p>
                         {% endif %}
+                    </div>
+                    <div class="col-sm-3 col-xs-2"></div>
+                </div>
+
+                <div class="col-sm-9"></div>
+                <div class="slogan">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if user %}
+                                <p class="clr-1">{{ user.firstName }} {{ user.lastName }}</p><br><br>
+                                <p>{{ 'profile.show.email'|trans }}: {{ user.username }}</p><br><br>
+
+                                <p>Phone Number : {{ user.phone }}</p><br><br>
+
+                                <p>Subscription Date : {{ user.date | date("m/d/Y H:i:s") }}</p><br><br>
+                                <p>Current Balance: <span style="font-weight: bold;color: green;">{{ user.amount }} Dirhams</span></p>
+                            {% else %}
+                                <h2>Firstname Lastname</h2>
+                                <p>{{ 'profile.show.email'|trans }}: email</p><br><br>
+                                <p>
+
+                                </p>
+                                <p>Subscription Date : </p><br><br>
+                                <p>Current Balance: amount</p>
+                            {% endif %}
+
+                        </div>
 
                     </div>
 
                 </div>
+            {% else %}
 
-            </div>
+                <p>noting to show</p>
+            {% endif %}
+
         </section>
     </div>
+    <script>
+        window.onload = function () {
+            if (typeof history.pushState === "function") {
+                history.pushState("jibberish", null, null);
+                window.onpopstate = function () {
+                    history.pushState('newjibberish', null, null);
+                };
+            } else {
+                var ignoreHashChange = true;
+                window.onhashchange = function () {
+                    if (!ignoreHashChange) {
+                        ignoreHashChange = true;
+                        window.location.hash = Math.random();
+                    } else {
+                        ignoreHashChange = false;
+                    }
+                };
+            }
+        }
+    </script>
 </div>
 
 

@@ -1,0 +1,84 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="bg">
+
+    <div class="bg-2">
+        <section id="content" class="row">
+            <div class="row">
+                {% if app.session.flashbag.has('info-edit') %}
+                    <div class="alert alert-success">
+                        {% for message in app.session.flashbag.get('info-edit') %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if app.session.get('user') %}
+                <div class="col-sm-3">
+                    {% if app.user and app.user.image is defined %}
+                        <img src="{{ user.image.webPath }}" width="200" height="130" />
+                    {% else %}
+                        {% if user.image %}
+                            <img src="{{ asset(user.image.uploadDir ~ '/' ~ user.image.id ~ '.' ~ user.image.url) }}" style="max-width: 130px;max-height: 130px;" />
+                        {% endif %}
+
+                    {% endif %}
+                </div>
+                <div class="col-sm-9"></div>
+                <div class="slogan">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if user %}
+                                <p class="clr-1">{{ user.firstName }} {{ user.lastName }}</p><br><br>
+                                <p>{{ 'profile.show.email'|trans }}: {{ user.username }}</p><br><br>
+
+                                <p>Phone Number : {{ user.phone }}</p><br><br>
+
+                                <p>Subscription Date : {{ user.date | date("m/d/Y H:i:s") }}</p><br><br>
+                                <p>Current Balance: <span style="font-weight: bold;color: green;">{{ user.amount }} Dirhams</span></p>
+                            {% else %}
+                                <h2>Firstname Lastname</h2>
+                                <p>{{ 'profile.show.email'|trans }}: email</p><br><br>
+                                <p>
+
+                                </p>
+                                <p>Subscription Date : </p><br><br>
+                                <p>Current Balance: amount</p>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            {% else %}
+
+                <p>noting to show</p>
+            {% endif %}
+
+        </section>
+    </div>
+    <script>
+        window.onload = function () {
+            if (typeof history.pushState === "function") {
+                history.pushState("jibberish", null, null);
+                window.onpopstate = function () {
+                    history.pushState('newjibberish', null, null);
+                };
+            } else {
+                var ignoreHashChange = true;
+                window.onhashchange = function () {
+                    if (!ignoreHashChange) {
+                        ignoreHashChange = true;
+                        window.location.hash = Math.random();
+                    } else {
+                        ignoreHashChange = false;
+                    }
+                };
+            }
+        }
+    </script>
+</div>
+
+

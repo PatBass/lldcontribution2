@@ -9,32 +9,9 @@
             <section id="content">
                 <div class="slogan top-1">
                     <p>We <span class="clr-1">provide</span> you with the <span class="clr-1">highest</span> level of <span class="clr-1">services</span></p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit vivamus sed arcu dui eu tincidunt sem.</p>
-                    <a href="#" class="button-2">click here</a>
-                </div>
-                <div class="row" >
-                    <div class="col-sm-10 col-sm-offset-1 alert alert-danger" style="text-align: center;border: 1px solid crimson;display: none;">
-                        {#{% if error %}#}
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="Close" class="close" data-dismiss="alert">&times;</button>
-                        <div id="errorForm">{{ form_errors(form) }}</div>
-                        {#{% endif %}#}
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-offset-4 col-xs-5">
-                        {% if app.session.flashbag.has('notice') %}
-                            <div class="alert alert-success">
-                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                                {% for message in app.session.flashbag.get('notice') %}
-                                    {{ message }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+                    <a href="#" class="button-2">click here</a> </div>
                 <div class="page5-row1">
-                    <div class="page5-col-1 border-right">
+                    <div class="page5-col-1 border-bottom">
                         <h2><span class="clr-1">C</span>ontact info</h2>
                         <dl class="adr">
                             <dt class="clr-1"><strong>LLD Contribution</strong></dt>
@@ -46,7 +23,7 @@
                     </div>
                     <div class="page5-col-2">
                         <h2><span class="clr-1">C</span>ontact form:</h2>
-                        <form id="form" method="POST" action="{{ path('contact') }}">
+                        <form id="form" method="post" action="#">
                             <fieldset>
                                 <div class="form-group" style="color: red;">
                                     <label><strong></strong>
@@ -67,8 +44,7 @@
                                         <strong class="clear"></strong></label>
                                 </div>
                                 <strong class="clear"></strong>
-                                <button type="submit" class="btn-xs tf-btn btn-success">Send</button>
-
+                                <div class="btns"><a href="#" class="link-2">Clear</a><a href="#" class="link-2">Send</a></div>
                             </fieldset>
                         </form>
                     </div>
@@ -82,7 +58,6 @@
     {% include('MainBundle:Common:footer.html.twig') %}
 {% endblock %}
 {% block javascripts %}
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
         function openNav() {
             document.getElementById('mySideNav').style.width = "250px";

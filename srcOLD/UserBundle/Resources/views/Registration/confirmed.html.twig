@@ -1,0 +1,59 @@
+{% extends "::Layout/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}Registration - {{ parent() }}{% endblock %}
+{% block body %}
+
+    <div class="bg">
+        <div class="bg-2">
+            {% include('MainBundle:Common:header2.html.twig') with { active:''} %}
+            <!--============================== content ================================-->
+            <section id="content" class="row">
+                <div class="container-fluid" style="position: relative; top:50px;">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <div class="panel panel-default">
+                            <div class="panel-body" id="">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <img src="{{ asset('bundles/applatform/images/ok.jpg') }}" width="90%" height="90%" >
+                                    </div>
+                                    <div class="col-sm-offset-3 col-sm-6" >
+                                        <p style="margin-top: 50px;"></i> {{ 'registration.confirmed'|trans({'%username%': user.lastName}) }}!</p>
+                                        {% if app.session is not empty %}
+                                            {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+                                            {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default"><i class="glyphicon glyphicon-user"></i> View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    {% include('MainBundle:Common:aside.html.twig') %}
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('mySideNav').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById('mySideNav').style.width = "0";
+        }
+    </script>
+
+{% endblock %}
+
+
+
+
+
+
+

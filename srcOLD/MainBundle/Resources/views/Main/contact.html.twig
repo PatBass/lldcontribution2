@@ -1,0 +1,73 @@
+{% extends "::Layout/layout.html.twig" %}
+{% block title %}Contact - {{ parent() }}{% endblock %}
+{% block body %}
+
+    <div class="bg">
+        <div class="bg-2">
+            {% include('MainBundle:Common:header2.html.twig') with { active: 'contact'} %}
+            <!--============================== content ================================-->
+            <section id="content">
+                <div class="slogan top-1">
+                    <p>We <span class="clr-1">provide</span> you with the <span class="clr-1">highest</span> level of <span class="clr-1">services</span></p>
+                    <p></p>
+                    <a href="#" class="button-2">click here</a> </div>
+                <div class="page5-row1">
+                    <div class="page5-col-1 border-right">
+                        <h2><span class="clr-1">C</span>ontact info</h2>
+                        <dl class="adr">
+                            <dt class="clr-1"><strong>LLD Contribution</strong></dt>
+                            <dd><strong>Casablanca, Morocco</strong></dd>
+                            <dd><span>Telephone:</span><strong>+212 602 03 09 72</strong></dd><br><br>
+                            <dd><span>Email:</span><a href="#" class="link">lldcontribution@gmail.com</a></dd>
+                            <dd>&nbsp;</dd>
+                        </dl>
+                    </div>
+                    <div class="page5-col-2">
+                        <h2><span class="clr-1">C</span>ontact form:</h2>
+                        <form id="form" method="POST" action="{{ path('contact') }}">
+                            <fieldset>
+                                <div class="form-group" style="color: red;">
+                                    <label><strong></strong>
+                                    <input type="text" class="form-control" id="fos_user_registration_form_name" placeholder="Full name:" name="fos_user_registration_form[name]" required="required" maxlength="255" pattern=".{2,}" />
+                                    {{ form_errors(form.name) }}
+                                        <strong class="clear"></strong></label>
+                                </div>
+                                <div class="form-group" style="color: red;">
+                                    <label><strong></strong>
+                                    <input type="text" class="form-control" id="fos_user_registration_form_email" placeholder="Email:" name="fos_user_registration_form[email]" required="required" maxlength="255" pattern=".{2,}" />
+                                    {{ form_errors(form.email) }}
+                                        <strong class="clear"></strong></label>
+                                </div>
+                                <div class="form-group" style="color: red;">
+                                    <label><strong></strong>
+                                    <textarea class="form-control" id="fos_user_registration_form_message" placeholder="Message:" name="fos_user_registration_form[email]" required="required" maxlength="255" pattern=".{2,}" ></textarea>
+                                    {{ form_errors(form.message) }}
+                                        <strong class="clear"></strong></label>
+                                </div>
+                                <strong class="clear"></strong>
+                                <button type="submit" class="btn-xs tf-btn btn-success">Send</button>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    {% include('MainBundle:Common:aside.html.twig') %}
+    {% include('MainBundle:Common:footer.html.twig') %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('mySideNav').style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById('mySideNav').style.width = "0";
+        }
+    </script>
+
+{% endblock %}
