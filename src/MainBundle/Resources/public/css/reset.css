@@ -27,6 +27,7 @@ embed {
 }
 article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
 	display:block;
+	padding-top: 40px;
 }
 mark, rp, rt, ruby, summary, time {
 	display:inline;

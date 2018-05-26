@@ -1,13 +1,15 @@
 /* Global properties ======================================================== */
 html, body {
-	width:100%;
+	width:100vw;
 	padding:0;
 	margin:0;
 }
 body {
 	font: 12px/18px Tahoma, Geneva, sans-serif;
 	color:#4d4d4d;
-	min-width:1147px;
+	overflow-x: hidden;
+	width: 100vw;
+	/*min-width:1147px;*/
 	background: #91abb5;
 }
 .ic {
@@ -18,7 +20,7 @@ body {
 	width:50%;
 	line-height:10px;
 	font-size:10px;
-	margin:-220% 0 0 0;
+	/*margin:-220% 0 0 0;*/
 	overflow:hidden;
 	padding:0
 }
@@ -264,7 +266,8 @@ ul.list-2 li a:hover {
 }
 /*********************************header*************************************/
 header {
-	width:1147px;
+	width: 100vw;
+	/*width:1147px;*/
 	margin:0 auto;
 	z-index:101;
 }
@@ -284,8 +287,10 @@ h1 {
 	padding:31px 0 13px 0;
 }
 nav {
-	width:1023px;
+	/*width:1023px;*/
+	width: 10vw;
 	z-index:100;
+
 	background:url(../images/shadow-2.png) center bottom no-repeat;
 	margin:0px auto;
 	padding:0px;
@@ -301,9 +306,18 @@ ul.menu li {
 	float:left;
 	line-height:29px;
 	margin:0px 0px 0px 0px;
-	width:193px;
+	/*width:193px;*/
 	text-align:center;
 	border-left:#d2dfe3 1px solid;
+}
+
+.no-padding-left-right {
+	padding-left: 0;
+	padding-right: 0;
+}
+.no-margin-left-right {
+	margin-left: 0;
+	margin-right: 0;
 }
 ul.menu li:first-child {
 	border:transparent 1px solid;
@@ -324,14 +338,15 @@ ul.menu li a:hover, ul.menu li.current a {
 }
 /*********************************content*************************************/
 #content {
-	width:973px;
+	width: 100vw;
+	/*width:973px;*/
 	margin:0 auto;
 	padding:0px 0px 48px 0;
 }
 .slogan {
 	text-align:center;
 	padding:16px 0 24px 0px;
-	background:url(../images/slogan-bg.png) 0 bottom no-repeat;
+	/*background:url(../images/slogan-bg.png) 0 bottom no-repeat;*/
 	position:relative;
 }
 .slogan p:first-child {
@@ -351,7 +366,8 @@ ul.menu li a:hover, ul.menu li.current a {
 .slogan .button-2 {
 	position:absolute;
 	bottom:-16px;
-	left:431px;
+	left:50%;
+	transform: translateX(-50%);
 	z-index:100;
 }
 .page1-row1 {
@@ -629,7 +645,7 @@ aside {
 	padding:30px 0 37px 0;
 }
 aside .wrap {
-	width:973px;
+	width:100vw;
 	margin:0 auto;
 }
 .aside-col-1 {
@@ -796,6 +812,18 @@ dl.adr dd a:hover {
 	overflow:hidden;
 	width:575px;
 }
+@media screen and (max-width: 1000px) {
+	.btns {
+		width: 100%;
+		text-align: left;
+	}
+	.hide-for-medium-screen {
+		display: none !important;
+	}
+	#form input, #form textarea {
+		width: 354px !important;
+	}
+}
 .btns a {
 	display:inline-block;
 	margin:7px 0px 0 25px;
@@ -810,4 +838,66 @@ dl.adr dd a:hover {
 	font-weight:normal;
 	margin-right:7px;
 	white-space:nowrap;
+}
+@media (min-width: 769px) {
+	ul.menu li a {
+		padding: 0 82px;
+	}
+
+	.bg-2 {
+		padding-top: 33px;
+	}
+
+	header {
+		margin-left: 4%;
+	}
+
+	div.container {
+		padding-left: 80px !important;
+	}
+
+	.page1-row2 {
+		padding: 33px 0 0 200px;
+	}
+	.page2-row1, .page3-row1, .page5-row1 {
+		padding: 33px 0 0 250px;
+	}
+
+	aside .wrap {
+		width: 80vw;
+	}
+}
+@media (max-width: 769px) {
+	ul.menu li a {
+		padding: 0 11px;
+	}
+	header	{
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.box-1 {
+		width: 100vw;
+		padding-bottom: 19px;
+		padding-top: 19px;
+		border-bottom: 1px solid #000;
+	}
+
+	.page2-col-1,.page2-col-2,
+	.page2-col-3,.page3-col-1 , .page5-col-1, .page5-col-2  {
+		width: 100vw;
+	}
+	.page2-col-2, .page2-col-3, .page5-col-2 {
+		padding-left: 0;
+	}
+	.border-bottom {
+		border-bottom: 1px solid #000;
+		padding-top: 19px;
+		padding-bottom: 19px;
+	}
+	#form input {
+		padding-left: 0;
+	}
 }

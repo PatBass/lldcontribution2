@@ -9,6 +9,7 @@
   position: relative;
   margin-top: 17px;
 }
+
 #contact-form label {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -21,7 +22,7 @@
 }
 @media (max-width: 767px) {
   #contact-form label {
-    width: 99%;
+    width: 50%;
   }
   #contact-form label + label {
     margin-left: 0px;

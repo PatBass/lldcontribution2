@@ -13,8 +13,6 @@ namespace Symfony\Bridge\Twig\Form;
 
 use Symfony\Component\Form\AbstractRendererEngine;
 use Symfony\Component\Form\FormView;
-use Twig\Environment;
-use Twig\Template;
 
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
@@ -22,19 +20,19 @@ use Twig\Template;
 class TwigRendererEngine extends AbstractRendererEngine implements TwigRendererEngineInterface
 {
     /**
-     * @var Environment
+     * @var \Twig_Environment
      */
     private $environment;
 
     /**
-     * @var Template
+     * @var \Twig_Template
      */
     private $template;
 
     /**
      * {@inheritdoc}
      */
-    public function setEnvironment(Environment $environment)
+    public function setEnvironment(\Twig_Environment $environment)
     {
         $this->environment = $environment;
     }
@@ -152,13 +150,13 @@ class TwigRendererEngine extends AbstractRendererEngine implements TwigRendererE
      */
     protected function loadResourcesFromTheme($cacheKey, &$theme)
     {
-        if (!$theme instanceof Template) {
-            /* @var Template $theme */
+        if (!$theme instanceof \Twig_Template) {
+            /* @var \Twig_Template $theme */
             $theme = $this->environment->loadTemplate($theme);
         }
 
         if (null === $this->template) {
-            // Store the first Template instance that we find so that
+            // Store the first \Twig_Template instance that we find so that
             // we can call displayBlock() later on. It doesn't matter *which*
             // template we use for that, since we pass the used blocks manually
             // anyway.
