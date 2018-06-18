@@ -821,7 +821,7 @@ dl.adr dd a:hover {
 		display: none !important;
 	}
 	#form input, #form textarea {
-		width: 354px !important;
+		width: 308px !important;
 	}
 }
 .btns a {
@@ -852,7 +852,7 @@ dl.adr dd a:hover {
 		margin-left: 4%;
 	}
 
-	div.container {
+	div.container:not(.no-padding-left) {
 		padding-left: 80px !important;
 	}
 
