@@ -7,10 +7,14 @@ html, body {
 body {
 	font: 12px/18px Tahoma, Geneva, sans-serif;
 	color:#4d4d4d;
-	overflow-x: hidden;
 	width: 100vw;
 	/*min-width:1147px;*/
 	background: #91abb5;
+}
+@media only screen and (min-width: 1200px) {
+	body {
+		overflow-x: hidden;
+	}
 }
 .ic {
 	border:0;
@@ -866,6 +870,9 @@ dl.adr dd a:hover {
 	aside .wrap {
 		width: 80vw;
 	}
+	#slide-2 {
+		display: none !important;
+	}
 }
 @media (max-width: 769px) {
 	ul.menu li a {
@@ -899,5 +906,30 @@ dl.adr dd a:hover {
 	}
 	#form input {
 		padding-left: 0;
+	}
+	.box-1 {
+		padding-left: 0 !important;
+	}
+	.wrap.page1-row2 {
+		padding-left: 0 !important;
+	}
+	.extra-wrap {
+		overflow: hidden;
+		width: calc(100% - 45px);
+		padding-bottom: 20px;
+		word-wrap: break-word;
+		font-weight: bold;
+	}
+	.img-border {
+		width: 100%;
+	}
+	#slide {
+		display: none !important;
+	}
+	#slide-2 {
+		display: block !important;
+	}
+	#slide-2 img {
+		width: 100%;
 	}
 }
