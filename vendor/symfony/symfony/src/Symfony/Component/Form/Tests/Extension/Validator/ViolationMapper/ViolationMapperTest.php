@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Form\Tests\Extension\Validator\ViolationMapper;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Validator\ViolationMapper\ViolationMapper;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\CallbackTransformer;
@@ -26,11 +25,14 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class ViolationMapperTest extends TestCase
+class ViolationMapperTest extends \PHPUnit_Framework_TestCase
 {
     const LEVEL_0 = 0;
+
     const LEVEL_1 = 1;
+
     const LEVEL_1B = 2;
+
     const LEVEL_2 = 3;
 
     /**
@@ -60,7 +62,7 @@ class ViolationMapperTest extends TestCase
 
     protected function setUp()
     {
-        $this->dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
+        $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
         $this->mapper = new ViolationMapper();
         $this->message = 'Message';
         $this->messageTemplate = 'Message template';
@@ -93,7 +95,7 @@ class ViolationMapperTest extends TestCase
      */
     private function getDataMapper()
     {
-        return $this->getMockBuilder('Symfony\Component\Form\DataMapperInterface')->getMock();
+        return $this->getMock('Symfony\Component\Form\DataMapperInterface');
     }
 
     /**
@@ -1257,7 +1259,7 @@ class ViolationMapperTest extends TestCase
         // Only add it if we expect the error to come up on a different
         // level than LEVEL_0, because in this case the error would
         // (correctly) be mapped to the distraction field
-        if (self::LEVEL_0 !== $target) {
+        if ($target !== self::LEVEL_0) {
             $mapFromPath = new PropertyPath($mapFrom);
             $mapFromPrefix = $mapFromPath->isIndex(0)
                 ? '['.$mapFromPath->getElement(0).']'
@@ -1271,7 +1273,7 @@ class ViolationMapperTest extends TestCase
 
         $this->mapper->mapViolation($violation, $parent);
 
-        if (self::LEVEL_0 !== $target) {
+        if ($target !== self::LEVEL_0) {
             $this->assertCount(0, $distraction->getErrors(), 'distraction should not have an error, but has one');
         }
 
