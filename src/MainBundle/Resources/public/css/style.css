@@ -933,3 +933,8 @@ dl.adr dd a:hover {
 		width: 100%;
 	}
 }
+@media  only screen and (max-width: 400px) {
+	ul.menu li a {
+		padding: 0 6px;
+	}
+}
